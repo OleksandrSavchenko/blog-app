@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { userSignUpRequest, showFormErrors } from '../../actions/signUpActions';
+import { addFlashMessage } from '../../actions/flashMessagesActions';
 
 import SignUpForm from './SignUpForm';
 
@@ -17,14 +18,14 @@ class SignUpPage extends Component {
     }
 }
 
-SignUpPage.propTypes = {
-    userSignUpRequest: React.PropTypes.func.isRequired
-};
-
 function mapStateToProps(state) {
     return {
         formErrors: state.formErrors
     }
 }
 
-export default connect(mapStateToProps, { userSignUpRequest, showFormErrors })(SignUpPage);
+export default connect(mapStateToProps, {
+    userSignUpRequest,
+    showFormErrors,
+    addFlashMessage
+})(SignUpPage);

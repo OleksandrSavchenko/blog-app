@@ -43,6 +43,10 @@ export default class SignUpForm extends Component {
             this.props.showFormErrors({});
             this.props.userSignUpRequest(this.data).then(
                 () => {
+                    this.props.addFlashMessage({
+                        type: 'success',
+                        text: 'You signed up successfully. Welcome my friend!'
+                    });
                     browserHistory.push('/');
                 },
                 (err) => {this.props.showFormErrors(err.response.data)}
