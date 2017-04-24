@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { browserHistory } from 'react-router';
 
 import validateInput from '../../shared/validations/signup';
 import TextFieldGroup from '../common/TextFieldGroup';
@@ -41,7 +42,9 @@ export default class SignUpForm extends Component {
         if (this.isValid()) {
             this.props.showFormErrors({});
             this.props.userSignUpRequest(this.data).then(
-                (res) => {},
+                () => {
+                    browserHistory.push('/');
+                },
                 (err) => {this.props.showFormErrors(err.response.data)}
             );
         }
@@ -57,6 +60,7 @@ export default class SignUpForm extends Component {
                 <TextFieldGroup
                     error={formErrors.username}
                     label="Username"
+                    inputType="text"
                     onChange={this.onChange}
                     field="username"
                 />
@@ -64,6 +68,7 @@ export default class SignUpForm extends Component {
                 <TextFieldGroup
                     error={formErrors.email}
                     label="Email"
+                    inputType="text"
                     onChange={this.onChange}
                     field="email"
                 />
@@ -71,6 +76,7 @@ export default class SignUpForm extends Component {
                 <TextFieldGroup
                     error={formErrors.password}
                     label="Password"
+                    inputType="password"
                     onChange={this.onChange}
                     field="password"
                 />
@@ -78,6 +84,7 @@ export default class SignUpForm extends Component {
                 <TextFieldGroup
                     error={formErrors.passwordConfirmation}
                     label="Password Confirmation"
+                    inputType="password"
                     onChange={this.onChange}
                     field="passwordConfirmation"
                 />
