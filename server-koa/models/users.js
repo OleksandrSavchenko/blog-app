@@ -34,7 +34,7 @@ userSchema.methods.checkPassword = (password) => {
         return false;
     }
 
-    return crypto.pbkdf2Sync(password, this.salt, 1, 128, 'sha1') == this.passwordHash;
+    return crypto.pbkdf2Sync(password, this.salt, 1, 128, 'sha1') === this.passwordHash;
 };
 
 const User = mongoose.model('User', userSchema);

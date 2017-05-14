@@ -21,7 +21,7 @@ passport.use(new LocalStrategy({
             }
 
             if (!user || !user.checkPassword(password)) {
-                return done(null, false, {message: 'User not exist or password is wrong'});
+                return done(null, false, { message: 'User not exist or password is wrong' });
             }
 
             return done(null, user);

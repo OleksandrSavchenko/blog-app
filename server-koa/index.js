@@ -8,8 +8,6 @@ import logger from 'koa-logger'; // requests logger
 import passport from 'koa-passport';
 import './config/passport';
 import jwt from 'jsonwebtoken';
-import socetioJwt from 'socketio-jwt';
-import socketIO from 'socket.io';
 
 import mongoose from 'mongoose';
 import config from './config/config';
@@ -49,7 +47,7 @@ router.get('/', async(ctx, next) => {
 
 router.post('/login', async(ctx, next) => {
     await passport.authenticate('local', (err, user) => {
-        if (user == false) {
+        if (user === false) {
             ctx.body = 'Login failed';
         } else {
             const payload = {
